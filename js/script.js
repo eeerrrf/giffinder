@@ -13,8 +13,7 @@ $(document).ready(function(){
   
     $("button").click(function(){
       var input = $("input").val();
-      giphyURLWithSearchTerm(input);
-      callGiphyAPIWithSearchTerm(input)
+      callGiphyAPIWithSearchTerm(input);
     });
   
   function giphyURLWithSearchTerm(searchTerm) {
