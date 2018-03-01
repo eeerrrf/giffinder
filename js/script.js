@@ -3,7 +3,7 @@
 //****************** SERIOUSLY TEST USING console.log()!!! ******************
 
 $(document).ready(function(){
-  
+
   // WRITE A CLICK HANDLER HERE
   /*
     1. click handler function
@@ -11,36 +11,43 @@ $(document).ready(function(){
     3. call the functions below!
   */
   
+    $("button").click(function(){
+      var input = $("input").val();
+      giphyURLWithSearchTerm(input);
+      callGiphyAPIWithSearchTerm(input)
+    });
+  
   function giphyURLWithSearchTerm(searchTerm) {
       // write a function that will return a url for the giphy API with
       // the searchTerm provided in the parameters
-          var newurl = "api.giphy.com/v1/stickers/search?q="+searchTerm+"&api_key=dc6zaTOxFJmzC";
-     appendImageToGallery(newurl); 
-    return newurl;
+        
+     appendImageToGallery(searchTerm); 
+    return searchTerm;
   }
 
   function appendImageToGallery(srcURL) {
       // write a function that will append an <img> to the div with class="gallery"
       // using the URL provided in the parameters
-      var gif= "<img src='" +srcURL + "'/>";
-     var image =$("body").append(gif);
-    return image;
+       $('body').append('<img src=' + srcURL + '>');
   }
 
   function callGiphyAPIWithSearchTerm(searchTerm) {
     $.ajax({
-      url: "https://api.giphy.com/v1/stickers/search?q=dog&api_key=dc6zaTOxFJmzC",
+      url: "https://api.giphy.com/v1/stickers/search?q="+searchTerm+"&api_key=dc6zaTOxFJmzC",
       method: "GET",
       success: function(response) {
-           // Log the whole response to the console
-            //console.log(response);
-           // Log the first image of the data to the console
-           var gif= "<img src=" +response+ "/>"; 
-           console.log(gif);
+            var randomizer = (Math.floor(Math.random()*10));
+          console.log(randomizer);
+           var url= "<img src=" +response.data[randomizer].images.original.url;+ "/>"; 
+           console.log(url);
+            appendImageToGallery(url);
            // Log the "type" property of the first image object to the console
            //console.log(response.type);
            // Log the "title" property of the first image object to the console
            //console.log(response.title);
+           // Log the whole response to the console
+            //console.log(response);
+           // Log the first image of the data to the console
       },
     }); 
 }
