@@ -27,7 +27,7 @@ $(document).ready(function(){
   function appendImageToGallery(srcURL) {
       // write a function that will append an <img> to the div with class="gallery"
       // using the URL provided in the parameters
-       $('body').append('<img src=' + srcURL + '>');
+       $('body').append('<img src="' + srcURL + '">');
   }
 
   function callGiphyAPIWithSearchTerm(searchTerm) {
@@ -37,7 +37,7 @@ $(document).ready(function(){
       success: function(response) {
             var randomizer = (Math.floor(Math.random()*10));
           console.log(randomizer);
-           var url= "<img src=" +response.data[randomizer].images.original.url;+ "/>"; 
+           var url=  response.data[randomizer].images.original.url; 
            console.log(url);
             appendImageToGallery(url);
            // Log the "type" property of the first image object to the console
