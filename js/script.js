@@ -36,7 +36,7 @@ $(document).ready(function(){
       method: "GET",
       success: function(response) {
             for (var i = 0; i < 5; i++) { 
-                var randomizer = (Math.floor(Math.random()*10));
+                var randomizer = (Math.floor(Math.random()*20));
                 console.log(randomizer);
                 var url=  response.data[randomizer].images.original.url;
                 console.log(url);
