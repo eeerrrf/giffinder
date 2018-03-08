@@ -12,32 +12,32 @@ $(document).ready(function(){
   */
   
     $("button").click(function(){
-      var input = $("input").val();
-      callGiphyAPIWithSearchTerm(input);
-            var word= input.split(" ");
-      for (var i = 0; i < word.length-1; i++) { 
-      var text = word[i];
-      callGiphyAPIWithSearchTerm(text);
-      }
+        var input = $("input").val();
+        callGiphyAPIWithSearchTerm(input);
+        var word= input.split(" ");
+        for (var i = 0; i < word.length-1; i++) { 
+            var text = word[i];
+            callGiphyAPIWithSearchTerm(text);
+        }
     });
   
-  function giphyURLWithSearchTerm(searchTerm) {
+    function giphyURLWithSearchTerm(searchTerm) {
       // write a function that will return a url for the giphy API with
       // the searchTerm provided in the parameters
         
-     appendImageToGallery(searchTerm); 
-    return searchTerm;
-  }
+        appendImageToGallery(searchTerm); 
+        return searchTerm;
+    }
 
-  function appendImageToGallery(srcURL) {
+    function appendImageToGallery(srcURL) {
       // write a function that will append an <img> to the div with class="gallery"
       // using the URL provided in the parameters
        $('body').append('<img src="' + srcURL + '">');
-  }
+    }
 
-  function callGiphyAPIWithSearchTerm(searchTerm) {
-    $.ajax({
-      url: "https://api.giphy.com/v1/stickers/search?q="+searchTerm+"&api_key=dc6zaTOxFJmzC",
+    function callGiphyAPIWithSearchTerm(searchTerm) {
+        $.ajax({
+        url: "https://api.giphy.com/v1/stickers/search?q="+searchTerm+"&api_key=dc6zaTOxFJmzC",
       method: "GET",
       success: function(response) {
           
