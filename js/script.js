@@ -35,6 +35,7 @@ $(document).ready(function(){
       url: "https://api.giphy.com/v1/stickers/search?q="+searchTerm+"&api_key=dc6zaTOxFJmzC",
       method: "GET",
       success: function(response) {
+          
             for (var i = 0; i < 5; i++) { 
                 var randomizer = (Math.floor(Math.random()*20));
                 console.log(randomizer);
@@ -53,8 +54,25 @@ $(document).ready(function(){
     }); 
 }
 
-    $("img").click(function(){
-        $("img").hide();
+    $(document).on("click" , "img" , function(e){
+        $(e.target).hide();
+
+        var input = $("input").val();
+        $.ajax({
+            url: "https://api.giphy.com/v1/stickers/search?q="+input+"&api_key=dc6zaTOxFJmzC",
+            method: "GET",
+            success: function(response) {
+          
+
+                var randomizer = (Math.floor(Math.random()*20));
+                console.log(randomizer);
+                var url=  response.data[randomizer].images.original.url;
+                console.log(url);
+                appendImageToGallery(url);
+  
+            },
+
+        });
     });
 
 });
