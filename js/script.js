@@ -37,17 +37,17 @@ $(document).ready(function(){
 
     function callGiphyAPIWithSearchTerm(searchTerm) {
         $.ajax({
-        url: "https://api.giphy.com/v1/stickers/search?q="+searchTerm+"&api_key=dc6zaTOxFJmzC",
-      method: "GET",
-      success: function(response) {
+            url: "https://api.giphy.com/v1/stickers/search?q="+searchTerm+"&api_key=dc6zaTOxFJmzC",
+            method: "GET",
+            success: function(response) {
           
-            for (var i = 0; i < 5; i++) { 
-                var randomizer = (Math.floor(Math.random()*15));
-                console.log(randomizer);
-                var url=  response.data[randomizer].images.original.url;
-                console.log(url);
-                appendImageToGallery(url);
-          }
+                for (var i = 0; i < 5; i++) { 
+                    var randomizer = (Math.floor(Math.random()*15));
+                    console.log(randomizer);
+                    var url=  response.data[randomizer].images.original.url;
+                    console.log(url);
+                    appendImageToGallery(url);
+                }
            // Log the "type" property of the first image object to the console
            //console.log(response.type);
            // Log the "title" property of the first image object to the console
@@ -55,9 +55,9 @@ $(document).ready(function(){
            // Log the whole response to the console
             //console.log(response);
            // Log the first image of the data to the console
-      },
-    }); 
-}
+            },
+        }); 
+    }
 
     $(document).on("click" , "img" , function(e){
         $(e.target).hide();
