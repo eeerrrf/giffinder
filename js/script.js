@@ -14,6 +14,11 @@ $(document).ready(function(){
     $("button").click(function(){
       var input = $("input").val();
       callGiphyAPIWithSearchTerm(input);
+            var word= input.split(" ");
+      for (var i = 0; i < word.length-1; i++) { 
+      var text = word[i];
+      callGiphyAPIWithSearchTerm(text);
+      }
     });
   
   function giphyURLWithSearchTerm(searchTerm) {
@@ -37,7 +42,7 @@ $(document).ready(function(){
       success: function(response) {
           
             for (var i = 0; i < 5; i++) { 
-                var randomizer = (Math.floor(Math.random()*20));
+                var randomizer = (Math.floor(Math.random()*15));
                 console.log(randomizer);
                 var url=  response.data[randomizer].images.original.url;
                 console.log(url);
@@ -64,7 +69,7 @@ $(document).ready(function(){
             success: function(response) {
           
 
-                var randomizer = (Math.floor(Math.random()*20));
+                var randomizer = (Math.floor(Math.random()*15));
                 console.log(randomizer);
                 var url=  response.data[randomizer].images.original.url;
                 console.log(url);
